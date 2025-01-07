@@ -56,7 +56,7 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-<!--                 <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a>,</span>
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a>,</span>
                 <span class="author-block">
                   <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a>,</span>
                   <span class="author-block">
@@ -67,7 +67,7 @@
                   <div class="is-size-5 publication-authors">
                     <span class="author-block">Institution Name<br>Conferance name and year</span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div> -->
+                  </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
@@ -159,7 +159,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Garment sewing patterns serve as the fundamental link between garment design and practical manufacturing. The generative modeling of digital sewing patterns is essential for diverse and creative garment design. However, existing approaches are limited by either a single input modality or suboptimal generation efficiency. In this work, we introduce \textbf{\textit{GarmentDiffusion}}, a new generative model that is capable of producing centimeter-precise, vectorized 3D sewing patterns from multi-modal inputs. Our method efficiently encodes 3D sewing pattern coordinates into condensed edge token representations, achieving a sequence length 10× shorter than that of the previous auto-regressive model, i.e., DressCode. By employing a diffusion transformer, we concurrently denoise all edge tokens along the temporal axis, maintaining a constant number of denoising steps regardless of dataset-specific edge and panel statistics. We also establish a new SOTA on the largest parametric sewing pattern dataset, GarmentCodeData.
+            Garment sewing patterns serve as the fundamental link between garment design and practical manufacturing. The generative modeling of digital sewing patterns is essential for diverse and creative garment design. However, existing approaches are limited by either a single input modality or suboptimal generation efficiency. In this work, we introduce GarmentDiffusion, a new generative model that is capable of producing centimeter-precise, vectorized 3D sewing patterns from multi-modal inputs. Our method efficiently encodes 3D sewing pattern coordinates into condensed edge token representations, achieving a sequence length 10× shorter than that of the previous auto-regressive model, i.e., DressCode. By employing a diffusion transformer, we concurrently denoise all edge tokens along the temporal axis, maintaining a constant number of denoising steps regardless of dataset-specific edge and panel statistics. We also establish a new SOTA on the largest parametric sewing pattern dataset, GarmentCodeData.
           </p>
         </div>
       </div>
@@ -173,17 +173,18 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title has-text-centered">
-        Tokenization
+      <p></p>
+      <h2 class="subtitle has-text-centered">
+        we encode edge-related parameters along the embedding dimension, while denoising all edge tokens in parallel along the temporal axis.
       </h2>
-      <p>This method breaks down the sewing pattern into smaller, manageable units for easier processing.</p>
-      
+      <h2 class="subtitle has-text-centered">
+        After rotating and translating the panels into 3D space, each edge is represented by its start endpoint, control point(s), stitch tag, and stitch flag. The edges form a panel following zero-padding. Each edge is assigned an edge order index and a panel index to indicate its order and its association with the specific panel.
+      </h2>
+      <p></p> 
       <!-- Your image here -->
       <div style="text-align: center;">
       <img src="static/images/tokenize.jpg" alt="MY ALT TEXT" width="400"/>
-      <h2 class="subtitle has-text-centered">
-        Tokenization method for the sewing pattern.
-      </h2>
+      <p></p>
     </div>
 
     <div class="container">
