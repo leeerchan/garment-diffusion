@@ -173,26 +173,37 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <p></p>
-      <h2 class="subtitle has-text-centered">
+      <h2 class="title has-text-centered">
+        Tokenization
+      </h2>
+      <br>
+      <p>
         we encode edge-related parameters along the embedding dimension, while denoising all edge tokens in parallel along the temporal axis.
-      </h2>
-      <h2 class="subtitle has-text-centered">
+      </p>
+      <p>
         After rotating and translating the panels into 3D space, each edge is represented by its start endpoint, control point(s), stitch tag, and stitch flag. The edges form a panel following zero-padding. Each edge is assigned an edge order index and a panel index to indicate its order and its association with the specific panel.
-      </h2>
-      <p></p> 
+      </p>
+      <br>
       <!-- Your image here -->
       <div style="text-align: center;">
       <img src="static/images/tokenize.jpg" alt="MY ALT TEXT" width="400"/>
-      <p></p>
+      <br>
     </div>
 
     <div class="container">
+      <br>
       <h2 class="title has-text-centered">
         Network architecture
       </h2>
-      <p>This method breaks down the sewing pattern into smaller, manageable units for easier processing.</p>
-      
+      <p>During training, the edge sequence with injected noise is encoded 
+        and combined with embeddings of edge order index, panel index, and timestep 
+        before being fed into the transformer network for prediction. 
+        After embedding the text and image conditions, 
+        decoupled cross-attention is used to compute the attention outputs separately 
+        for each condition while sharing the query. 
+        The results are then summed to achieve joint control of both text and image conditions.
+        Automatic pattern completion is achieved by noise replacement with user-provided panel during inference.
+      </p>
       <!-- Your image here -->
       <div style="text-align: center;">
       <img src="static/images/network.jpg" alt="MY ALT TEXT" width="800"/>
