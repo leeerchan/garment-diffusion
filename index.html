@@ -159,7 +159,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Garment sewing patterns serve as the fundamental link between garment design and practical manufacturing. The generative modeling of digital sewing patterns is essential for diverse and creative garment design. However, existing approaches are limited by either a single input modality or suboptimal generation efficiency. In this work, we introduce GarmentDiffusion, a new generative model that is capable of producing centimeter-precise, vectorized 3D sewing patterns from multi-modal inputs. Our method efficiently encodes 3D sewing pattern coordinates into condensed edge token representations, achieving a sequence length 10× shorter than that of the previous auto-regressive model, i.e., DressCode. By employing a diffusion transformer, we concurrently denoise all edge tokens along the temporal axis, maintaining a constant number of denoising steps regardless of dataset-specific edge and panel statistics. We also establish a new SOTA on the largest parametric sewing pattern dataset, GarmentCodeData.
+            Garment sewing patterns are fundamental design elements that bridge the gap between garment design and practical manufacturing. 
+            The generative modeling of sewing patterns is crucial for creating diverse and innovative garment designs. 
+            However, existing approaches are limited either by reliance on a single input modality or by suboptimal generation efficiency. 
+            In this work, we present GarmentDiffusion, a new generative model capable of producing 
+            centimeter-precise, vectorized 3D sewing patterns from multi-modal inputs (text, image, and incomplete sewing pattern).
+            Our method efficiently encodes 3D sewing pattern parameters into compact edge token representations, 
+            achieving a sequence length 10× shorter than that of the previous autoregressive modeling approach, i.e., DressCode.
+            By employing a diffusion transformer, we simultaneously denoise all edge tokens along the temporal axis, 
+            while maintaining a constant number of denoising steps regardless of dataset-specific edge and panel statistics.
+            We achieve new SOTA results on the largest parametric sewing pattern dataset, namely GarmentCodeData.
           </p>
         </div>
       </div>
@@ -179,17 +188,17 @@
       <br>
       <!-- Your image here -->
       <div style="text-align: center;">
-      <img src="static/images/tokenize.jpg" alt="MY ALT TEXT" width="400"/>
+      <img src="static/images/tokenize.png" alt="MY ALT TEXT" width="400"/>
       <br>
       <br>
-      <p>
+      <p style="text-align:left;">
         we encode edge-related parameters along the embedding dimension, 
         while denoising all edge tokens in parallel along the temporal axis.
         After rotating and translating the panels into 3D space, 
-        each edge is represented by its start endpoint, control point(s), stitch tag, and stitch flag. 
-        The edges form a panel following zero-padding. 
-        Each edge is assigned an edge order index and a panel index to indicate its order 
-        and its association with the specific panel.
+        each edge is represented by its starting endpoint, control point(s), arc parameters, stitch tag, and stitch flag. 
+        The edges are arranged into a panel using zero-padding. 
+        Each edge is assigned an edge-order index and a panel-order index 
+        to indicate its position within the sequence and its association with the corresponding panel.
       </p>
       <br>
       <br>
@@ -202,16 +211,16 @@
       <br>
       <!-- Your image here -->
       <div style="text-align: center;">
-      <img src="static/images/network.jpg" alt="MY ALT TEXT" width="800"/>
+      <img src="static/images/network.png" alt="MY ALT TEXT" width="800"/>
       <br>
       <br>
-      <p>
+      <p style="text-align:left;">
         During training, the edge sequence with injected noise is encoded 
-        and combined with embeddings of edge order index, panel index, and timestep 
+        and combined with embeddings of edge-order indices, panel-order indices, and timesteps
         before being fed into the transformer network for prediction. 
         After embedding the text and image conditions, 
         decoupled cross-attention is used to compute the attention outputs separately 
-        for each condition while sharing the query. 
+        while sharing the query. 
         The results are then summed to achieve joint control of both text and image conditions.
         Automatic pattern completion is achieved by noise replacement with user-provided panel during inference.
       </p>
@@ -226,12 +235,20 @@
       <br>
       <!-- Your image here -->
       <div style="text-align: center;">
-      <img src="static/images/data.jpg" alt="MY ALT TEXT" width="600"/>
+      <img src="static/images/data.png" alt="MY ALT TEXT" width="600"/>
       <br>
       <br>
-      <p>
-        We created text and sketch modalities for the DressCode and GarmentCode (v2) datasets.
-
+      <p style="text-align:left;"> 
+        We provide a new data annotation pipeline that can gen- 120
+        erate both brief and detailed text descriptions, as well 121
+        as garment sketches for sewing patterns, enabling multi- 122
+        modal controllable sewing pattern generation.
+        Both pipelines are applied to complete data modalities for the GarmentCode and DressCode datasets.
+        The up-left pipeline
+        illustrates the generation of text descriptions at both brief and de-
+        tailed levels, and the up-right pipeline represents the generation of
+        sketches. The system and user prompts for LLM and text descrip-
+        tions examples are shown at the bottom.
       </p>
       <br>
       <br>
@@ -276,8 +293,6 @@
 
           <p>
             This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
 
         </div>
